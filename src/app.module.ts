@@ -16,10 +16,10 @@ import { OrderModule } from './order/order.module';
         ConfigModule.forRoot({ isGlobal: true }),
         GraphQLModule.forRoot<ApolloDriverConfig>({
             driver: ApolloDriver,
+            // path: join(process.cwd(), 'src/schema/graphql.ts'), // Apparently, having this line uncommented breaks apollo landingpage
             plugins: [ApolloServerPluginLandingPageLocalDefault()],
             typePaths: ['./**/*.graphql'],
-            path: join(process.cwd(), 'src/schema/graphql.ts'),
-            playground: false,
+            playground: false
         }),
         Neo4jModule.forRootAsync(),
         MachineModule,

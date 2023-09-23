@@ -66,7 +66,8 @@ export class MachineRepository {
             .matchNode(Entities.Machine, Entities.Machine)
             .where({ [`${Entities.Machine}.uuid`]: uuid })
             .detachDelete(Entities.Machine)
+            .return(Entities.Machine)
             .run()
-        return true;
+        return !!query?.length;
   }
 }

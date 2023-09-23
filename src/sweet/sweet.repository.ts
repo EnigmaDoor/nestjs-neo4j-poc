@@ -66,7 +66,8 @@ export class SweetRepository {
             .matchNode(Entities.Sweet, Entities.Sweet)
             .where({ [`${Entities.Sweet}.uuid`]: uuid })
             .detachDelete(Entities.Sweet)
+            .return(Entities.Sweet)
             .run()
-        return true;
+        return !!query?.length;
   }
 }

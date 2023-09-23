@@ -66,7 +66,8 @@ export class OrderRepository {
             .matchNode(Entities.Order, Entities.Order)
             .where({ [`${Entities.Order}.uuid`]: uuid })
             .detachDelete(Entities.Order)
+            .return(Entities.Order)
             .run()
-        return true;
+        return !!query?.length;
   }
 }
