@@ -9,7 +9,6 @@ export class OrderService {
     constructor(private readonly neo4jRepository: Neo4jRepository) {}
 
     async create(createOrderInput: CreateOrderInput) {
-        console.log(createOrderInput)
         const query = await this.neo4jRepository
             .initQuery()
             .create([node('order', 'Order', createOrderInput)])
