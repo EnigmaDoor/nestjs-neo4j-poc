@@ -1,3 +1,4 @@
+import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -9,7 +10,6 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { MachineModule } from './machine/machine.module';
 import { SweetModule } from './sweet/sweet.module';
 import { OrderModule } from './order/order.module';
-import { MachineProducesSweetsModule } from './machine-produces-sweets/machine-produces-sweets.module';
 
 @Module({
     imports: [
@@ -18,13 +18,13 @@ import { MachineProducesSweetsModule } from './machine-produces-sweets/machine-p
             driver: ApolloDriver,
             plugins: [ApolloServerPluginLandingPageLocalDefault()],
             typePaths: ['./**/*.graphql'],
+            path: join(process.cwd(), 'src/schema/graphql.ts'),
             playground: false,
         }),
         Neo4jModule.forRootAsync(),
         MachineModule,
         SweetModule,
         OrderModule,
-        MachineProducesSweetsModule,
     ],
     controllers: [AppController],
     providers: [AppService],
