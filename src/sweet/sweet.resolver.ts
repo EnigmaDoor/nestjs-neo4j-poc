@@ -18,17 +18,17 @@ export class SweetResolver {
   }
 
   @Query('sweet')
-  findOne(@Args('id') id: number) {
-    return this.sweetService.findOne(id);
+  findOne(@Args('uuid') uuid: string) {
+    return this.sweetService.findOne(uuid);
   }
 
   @Mutation('updateSweet')
   update(@Args('updateSweetInput') updateSweetInput: UpdateSweetInput) {
-    return this.sweetService.update(updateSweetInput.id, updateSweetInput);
+    return this.sweetService.update(updateSweetInput.uuid, updateSweetInput);
   }
 
   @Mutation('removeSweet')
-  remove(@Args('id') id: number) {
-    return this.sweetService.remove(id);
+  remove(@Args('uuid') uuid: string) {
+    return this.sweetService.remove(uuid);
   }
 }

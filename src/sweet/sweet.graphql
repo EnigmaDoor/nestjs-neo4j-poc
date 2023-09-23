@@ -7,7 +7,7 @@ enum Ingredient {
 }
 
 type Sweet {
-  id: ID!
+  uuid: UUID!
   name: String!
   price: Int!
   quantityInStock: Int!
@@ -22,7 +22,7 @@ input CreateSweetInput {
 }
 
 input UpdateSweetInput {
-  id: Int!
+  uuid: UUID!
   name: String
   price: Int
   quantityInStock: Int
@@ -31,11 +31,11 @@ input UpdateSweetInput {
 
 type Query {
   sweets: [Sweet]!
-  sweet(id: Int!): Sweet
+  sweet(uuid: UUID!): Sweet
 }
 
 type Mutation {
   createSweet(createSweetInput: CreateSweetInput!): Sweet!
   updateSweet(updateSweetInput: UpdateSweetInput!): Sweet!
-  removeSweet(id: Int!): Sweet
+  removeSweet(uuid: UUID!): Sweet
 }

@@ -7,9 +7,12 @@ services:
       - '7474:7474'
       - '${DB_PORT}:${DB_PORT}'
     volumes:
-      - data:/data/db
+      - data:/data
+      - plugins:/plugins
     environment:
       - 'NEO4J_AUTH=${DB_USERNAME}/${DB_PASSWORD}'
+      - NEO4J_apoc_uuid_enabled=true
+      - NEO4J_PLUGINS=["apoc"]
 
   app:
     container_name: app
@@ -26,3 +29,4 @@ services:
 
 volumes:
   data: {}
+  plugins: {}

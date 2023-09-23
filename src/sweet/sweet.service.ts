@@ -12,15 +12,15 @@ export class SweetService {
     return `This action returns all sweet`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sweet`;
+  findOne(uuid: string) {
+    return `This action returns a #${uuid} sweet`;
   }
 
-  update(id: number, updateSweetInput: UpdateSweetInput) {
-    return `This action updates a #${id} sweet`;
+  update(uuid: string, updateSweetInput: UpdateSweetInput) {
+    return `This action updates a #${uuid} sweet`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} sweet`;
+  remove(uuid: string) {
+    return `This action removes a #${uuid} sweet`;
   }
 }

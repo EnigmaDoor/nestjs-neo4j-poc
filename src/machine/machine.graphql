@@ -7,7 +7,7 @@ enum MachineStatus {
 }
 
 type Machine {
-  id: ID!
+  uuid: UUID!
   type: String!
   capacity: Int!
   status: MachineStatus!
@@ -20,7 +20,7 @@ input CreateMachineInput {
 }
 
 input UpdateMachineInput {
-  id: Int!
+  uuid: UUID!
   type: String
   capacity: Int
   status: MachineStatus
@@ -28,11 +28,11 @@ input UpdateMachineInput {
 
 type Query {
   machines: [Machine]!
-  machine(id: Int!): Machine
+  machine(uuid: UUID!): Machine
 }
 
 type Mutation {
   createMachine(createMachineInput: CreateMachineInput!): Machine!
   updateMachine(updateMachineInput: UpdateMachineInput!): Machine!
-  removeMachine(id: Int!): Machine
+  removeMachine(uuid: UUID!): Machine
 }

@@ -18,17 +18,17 @@ export class MachineResolver {
   }
 
   @Query('machine')
-  findOne(@Args('id') id: number) {
-    return this.machineService.findOne(id);
+  findOne(@Args('uuid') uuid: string) {
+    return this.machineService.findOne(uuid);
   }
 
   @Mutation('updateMachine')
   update(@Args('updateMachineInput') updateMachineInput: UpdateMachineInput) {
-    return this.machineService.update(updateMachineInput.id, updateMachineInput);
+    return this.machineService.update(updateMachineInput.uuid, updateMachineInput);
   }
 
   @Mutation('removeMachine')
-  remove(@Args('id') id: number) {
-    return this.machineService.remove(id);
+  remove(@Args('uuid') uuid: string) {
+    return this.machineService.remove(uuid);
   }
 }
