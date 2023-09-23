@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { SweetService } from './sweet.service';
-import { CreateSweetInput } from './dto/create-sweet.input';
-import { UpdateSweetInput } from './dto/update-sweet.input';
+import { Sweet, CreateSweetInput, UpdateSweetInput } from 'src/schema/graphql';
 
 @Resolver('Sweet')
 export class SweetResolver {

@@ -1,3 +1,7 @@
+enum Entities {
+  Order
+}
+
 enum OrderStatus {
   ACTIVE
   PENDING
@@ -30,5 +34,5 @@ type Query {
 type Mutation {
   createOrder(createOrderInput: CreateOrderInput!): Order!
   updateOrder(updateOrderInput: UpdateOrderInput!): Order!
-  removeOrder(uuid: UUID!): Order
+  removeOrder(uuid: UUID!): Boolean!
 }

@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { OrderService } from './order.service';
-import { CreateOrderInput } from './dto/create-order.input';
-import { UpdateOrderInput } from './dto/update-order.input';
+import { Order, CreateOrderInput, UpdateOrderInput } from 'src/schema/graphql';
 
 @Resolver('Order')
 export class OrderResolver {

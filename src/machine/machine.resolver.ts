@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { MachineService } from './machine.service';
-import { CreateMachineInput } from './dto/create-machine.input';
-import { UpdateMachineInput } from './dto/update-machine.input';
+import { Machine, CreateMachineInput, UpdateMachineInput } from 'src/schema/graphql';
 
 @Resolver('Machine')
 export class MachineResolver {

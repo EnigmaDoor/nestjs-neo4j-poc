@@ -1,3 +1,7 @@
+enum Entities {
+  Machine
+}
+
 enum MachineStatus {
   ACTIVE
   PRODUCING
@@ -34,5 +38,5 @@ type Query {
 type Mutation {
   createMachine(createMachineInput: CreateMachineInput!): Machine!
   updateMachine(updateMachineInput: UpdateMachineInput!): Machine!
-  removeMachine(uuid: UUID!): Machine
+  removeMachine(uuid: UUID!): Boolean!
 }

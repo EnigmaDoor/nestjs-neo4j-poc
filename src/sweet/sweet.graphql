@@ -1,3 +1,7 @@
+enum Entities {
+  Sweet
+}
+
 enum Ingredient {
   BANANA
   APPLE
@@ -37,5 +41,5 @@ type Query {
 type Mutation {
   createSweet(createSweetInput: CreateSweetInput!): Sweet!
   updateSweet(updateSweetInput: UpdateSweetInput!): Sweet!
-  removeSweet(uuid: UUID!): Sweet
+  removeSweet(uuid: UUID!): Boolean!
 }
