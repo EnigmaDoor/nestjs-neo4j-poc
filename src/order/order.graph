@@ -1,0 +1,34 @@
+enum OrderStatus {
+  ACTIVE
+  PENDING
+  DELIVERED
+  ERROR
+}
+
+type Order {
+  uuid: UUID!
+  customer: String!
+  status: OrderStatus!
+}
+
+input CreateOrderInput {
+  customer: String!
+  status: OrderStatus!
+}
+
+input UpdateOrderInput {
+  uuid: UUID!
+  customer: String
+  status: OrderStatus
+}
+
+type Query {
+  orders: [Order]!
+  order(uuid: UUID!): Order
+}
+
+type Mutation {
+  createOrder(createOrderInput: CreateOrderInput!): Order!
+  updateOrder(updateOrderInput: UpdateOrderInput!): Order!
+  removeOrder(uuid: UUID!): Order
+}
