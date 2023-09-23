@@ -1,0 +1,38 @@
+enum Ingredient {
+  BANANA
+  APPLE
+  SUGAR
+  CARAMEL
+  CHOCOLATE
+}
+
+type Sweet {
+  id: ID!
+  price: Int!
+  quantityInStock: Int!
+  ingredients: [Ingredient!]!
+}
+
+input CreateSweetInput {
+  price: Int!
+  quantityInStock: Int!
+  ingredients: [Ingredient!]!
+}
+
+input UpdateSweetInput {
+  id: Int!
+  price: Int
+  quantityInStock: Int
+  ingredients: [Ingredient!]
+}
+
+type Query {
+  sweets: [Sweet]!
+  sweet(id: Int!): Sweet
+}
+
+type Mutation {
+  createSweet(createSweetInput: CreateSweetInput!): Sweet!
+  updateSweet(updateSweetInput: UpdateSweetInput!): Sweet!
+  removeSweet(id: Int!): Sweet
+}

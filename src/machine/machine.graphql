@@ -1,0 +1,38 @@
+enum MachineStatus {
+  ACTIVE
+  PRODUCING
+  IDLE
+  INACTIVE
+  ERROR
+}
+
+type Machine {
+  id: ID!
+  type: String!
+  capacity: Int!
+  status: MachineStatus!
+}
+
+input CreateMachineInput {
+  type: String!
+  capacity: Int!
+  status: MachineStatus!
+}
+
+input UpdateMachineInput {
+  id: Int!
+  type: String
+  capacity: Int
+  status: MachineStatus
+}
+
+type Query {
+  machines: [Machine]!
+  machine(id: Int!): Machine
+}
+
+type Mutation {
+  createMachine(createMachineInput: CreateMachineInput!): Machine!
+  updateMachine(updateMachineInput: UpdateMachineInput!): Machine!
+  removeMachine(id: Int!): Machine
+}

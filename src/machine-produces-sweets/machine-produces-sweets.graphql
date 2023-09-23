@@ -1,0 +1,24 @@
+type MachineProducesSweet {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateMachineProducesSweetInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateMachineProducesSweetInput {
+  id: Int!
+}
+
+type Query {
+  machineProducesSweets: [MachineProducesSweet]!
+  machineProducesSweet(id: Int!): MachineProducesSweet
+}
+
+type Mutation {
+  createMachineProducesSweet(createMachineProducesSweetInput: CreateMachineProducesSweetInput!): MachineProducesSweet!
+  updateMachineProducesSweet(updateMachineProducesSweetInput: UpdateMachineProducesSweetInput!): MachineProducesSweet!
+  removeMachineProducesSweet(id: Int!): MachineProducesSweet
+}
