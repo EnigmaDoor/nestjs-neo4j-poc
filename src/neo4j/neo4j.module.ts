@@ -3,10 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Connection } from 'cypher-query-builder';
 import { NEO4J_CONFIG, NEO4J_CONNECTION } from './neo4j.constants';
 import { createDatabaseConfig, ConnectionError, ConnectionWithDriver, Neo4jConfig } from './neo4j.utils';
-import { QueryRepository } from './neo4j.repository';
+import { Neo4jRepository } from './neo4j.repository';
 
 @Module({
-  providers: [QueryRepository],
+  providers: [Neo4jRepository],
 })
 export class Neo4jModule {
   static forRootAsync(customConfig?: Neo4jConfig): DynamicModule {
@@ -26,11 +26,10 @@ export class Neo4jModule {
           inject: [NEO4J_CONFIG],
           useFactory: async (config: Neo4jConfig) => {
             try {
-              const { host, scheme, port, username, password } = config;
-              const connection = new Connection(`${scheme}://${host}:${port}`, {
-                username,
-                  password,
-              }) as ConnectionWithDriver;
+                const { host, scheme, port, username, password } = config;
+                const uri = `${scheme}://${host}:${port}`;
+                console.log("Connecting to Neo4j through", uri, username, password);
+              const connection = new Connection(uri, { username, password }) as ConnectionWithDriver;
 
                // await connection.driver.verifyConnectivity();
                return connection;
@@ -40,7 +39,7 @@ export class Neo4jModule {
           },
         },
       ],
-      exports: [QueryRepository],
+      exports: [Neo4jRepository],
     };
   }
 }

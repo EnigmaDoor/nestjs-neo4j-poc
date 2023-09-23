@@ -8,6 +8,7 @@ enum Ingredient {
 
 type Sweet {
   id: ID!
+  name: String!
   price: Int!
   quantityInStock: Int!
   ingredients: [Ingredient!]!
@@ -15,12 +16,14 @@ type Sweet {
 
 input CreateSweetInput {
   price: Int!
+  name: String!
   quantityInStock: Int!
   ingredients: [Ingredient!]!
 }
 
 input UpdateSweetInput {
   id: Int!
+  name: String
   price: Int
   quantityInStock: Int
   ingredients: [Ingredient!]

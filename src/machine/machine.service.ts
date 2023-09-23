@@ -1,14 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { Neo4jRepository } from 'src/neo4j/neo4j.repository';
 import { CreateMachineInput } from './dto/create-machine.input';
 import { UpdateMachineInput } from './dto/update-machine.input';
 
 @Injectable()
 export class MachineService {
-  create(createMachineInput: CreateMachineInput) {
+    constructor(private readonly neo4jRepository: Neo4jRepository) {}
+
+    create(createMachineInput: CreateMachineInput) {
     return 'This action adds a new machine';
   }
 
-  findAll() {
+    async findAll() {
+        const query = await this.neo4jRepository
+            .initQuery()
+            .raw('MATCH (machine: Machine) RETURN machine')
+            .run();
+        console.log(query)
     return `This action returns all machine`;
   }
 
