@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -10,8 +10,9 @@ import { NeogqlModule, gqlProviderFactory } from './neogql/neogql.module';
 @Module({
     imports: [
         ConfigModule.forRoot({ isGlobal: true }),
-        NeogqlModule.forRootAsync(),
         GraphQLModule.forRootAsync<ApolloDriverConfig>({
+            imports: [ConfigModule],
+            inject: [ConfigService],
             driver: ApolloDriver,
             useFactory: gqlProviderFactory
         }),

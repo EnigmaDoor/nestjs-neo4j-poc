@@ -10,16 +10,12 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { NEOGQL_CONFIG, NEOGQL_CONNECTION } from './neogql.constants';
 
-export const gqlProviderFactory = async (neogqlConfig: NeogqlConfig) => {
+export const gqlProviderFactory = async (configService: ConfigService, customConfig?: NeogqlConfig) => {
     const loader = new GraphQLTypesLoader();
     const typeDefs = await loader.mergeTypesByPaths(['./**/*.schema.graphql']);
-    const host = process.env.DB_HOST;
-    const scheme = process.env.DB_SCHEME;
-    const port = process.env.DB_PORT;
-    const username = process.env.DB_USERNAME;
-    const password = process.env.DB_PASSWORD;
-    // const { host, scheme, port, username, password } = neogqlConfig;
-    const uri = `${scheme}://${host}:${port}`;
+
+    const neogqlConfig = await createDatabaseConfig(configService, customConfig);
+    const { host, scheme, port, uri, username, password } = neogqlConfig;
 
     const driver = neo4j.driver(uri, neo4j.auth.basic(username, password));
 
@@ -33,8 +29,6 @@ export const gqlProviderFactory = async (neogqlConfig: NeogqlConfig) => {
         options: { create: true }
     });
 
-    console.log("Connecting through", uri, username, password)
-
     return {
         plugins: [ApolloServerPluginLandingPageLocalDefault()],
         playground: false,
@@ -46,36 +40,4 @@ export const gqlProviderFactory = async (neogqlConfig: NeogqlConfig) => {
     providers: []
 })
 
-export class NeogqlModule {
-    static async forRootAsync(customConfig?: NeogqlConfig): Promise<DynamicModule> {
-    // static forRoot(customConfig?: NeogqlConfig) {
-        return {
-            module: NeogqlModule,
-            global: true,
-            // providers: [{
-            //     provide: NEOGQL_CONFIG,
-            //     inject: [ConfigService],
-            //     useFactory: (configService: ConfigService) =>
-            //         createDatabaseConfig(configService, customConfig),
-            // }, {
-            //     provide: NEOGQL_CONNECTION,
-            //     inject: [NEOGQL_CONFIG],
-            //     useFactory: async (config: NeogqlConfig) => {
-            //         const options = await gqlProviderFactory(config);
-
-            //         return GraphQLModule.forRoot<ApolloDriverConfig>({
-            //             driver: ApolloDriver,
-            //             ...options
-            //         });
-            //     }
-            // }],
-            imports: [
-                ConfigModule,
-                // GraphQLModule.forRootAsync<ApolloDriverConfig>({
-                //     driver: ApolloDriver,
-                //     useFactory: gq
-                // })
-            ]
-        }
-    }
-}
+export class NeogqlModule {}

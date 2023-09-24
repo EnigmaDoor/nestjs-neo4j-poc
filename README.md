@@ -1,26 +1,23 @@
 ## Description
-11;rgb:3030/0a0a/2424
-Nest + Neo4j + Graphql schema-first repository
-Thanks to [k]code https://www.youtube.com/watch?v=kEoSJTbONNI
-https://github.com/k-code-yt/nestjs-gql-neo4j
+Basic nestjs + neo4j + graphql implementation using Machines, Sweets & Orders.
 
-## Installation
+## Installation & Running the app
 
 ```bash
 $ cp .env.example .env
-```
-
-## Running the app
-
-```bash
 $ docker-compose up
 ```
+You can find scripts to populate & execute the requested requests in ./queries/
+
+## Journey
+As I mentionned in the interview, my experience with graphql & nestjs is limited (and never those two at the same time). It was initially a challenge to find the correct ressource & way to implement and use both of those technologies. Still, I decided to use that stack for this test first as a challenge and as an opportunity to learn it.
+
+I initially implemented resources and CRUD manually, shying away from @neo4j/graphql (mainly due to the way of defining the schema, everything in one file), which led to v0.1 of this repo using cypher-query-builder, using a code structure similar to https://github.com/k-code-yt/nestjs-gql-neo4j/tree/lesson-2/dockerize
+
+However, I found a way to "hack" the schema definition of @neo4j/graphql with split graphql schemas, and progressively switched the app to fully use the library's functionalities, removing most of my previous code.
 
 ## Possible Improvements
 In random order, some possible improvements or interesting features to implement:
 - Testing: Implement testing.
-- Constraining the database: Automatically constraint the database using the schema, which seems possible at first glance using Neo4j driver and ours schemas. Install auto APOC UUID on each resource
-- Authentication: User entity type (order.customerName becomes a relation to user). Add regular JWT authto the user, not done here since it's already done a lot online.
-- A module for each relation for better scalability & separation of concerns. Here I added the relation in the outgoing node module as it wasn't necessary otherwise.
-- Refactorize the basic CRUD in a CRUD module + injection to avoid repetition for each resource.
+- Authentication: User entity type (order.customer becomes a relation to user). Add regular JWT authto the user, not done here since it's already done a lot online.
 - Random, real-time order generation script running against the server, populating data for a system of prediction of incoming orders based on the received orders until now.

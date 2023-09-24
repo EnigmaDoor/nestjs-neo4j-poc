@@ -14,6 +14,7 @@ export interface NeogqlConfig {
   scheme: Neo4jScheme;
   host: string;
   port: string | number;
+  uri: string;
   username: string;
   password: string;
   database?: string;
@@ -31,6 +32,7 @@ export const createDatabaseConfig = (
     host: configService.get('DB_HOST'),
     password: configService.get('DB_PASSWORD'),
     port: configService.get('DB_PORT'),
+    uri: `${configService.get('DB_SCHEME')}://${configService.get('DB_HOST')}:${configService.get('DB_PORT')}`,
     scheme: configService.get('DB_SCHEME'),
     username: configService.get('DB_USERNAME'),
 };
