@@ -1,0 +1,19 @@
+enum Entities {
+  Machine
+}
+
+enum MachineStatus {
+  PRODUCING
+  IDLE
+  INACTIVE
+  ERROR
+}
+
+type Machine {
+  uuid: UUID!
+  type: String!
+  capacity: Int!
+  status: MachineStatus! @default(value: IDLE)
+
+  sweets: [Sweet!]! @relationship(type: "PRODUCES", direction: OUT)
+}

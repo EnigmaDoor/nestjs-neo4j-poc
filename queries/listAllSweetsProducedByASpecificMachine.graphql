@@ -1,0 +1,11 @@
+# List all sweets produced by a specific Machine
+query Sweets {
+  sweets(
+    where: { machines_SOME: { uuid: "9969291e-495c-4208-a5a1-88da9916399b" } }
+  ) {
+    name
+    price
+    quantityInStock
+    uuid
+  }
+}

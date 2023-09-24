@@ -16,6 +16,9 @@ type Sweet {
   price: Int!
   quantityInStock: Int!
   ingredients: [Ingredient!]!
+
+  machines: [Machine!]! @relationship(type: "PRODUCES", direction: IN)
+  orders: [Order!]! @relationship(type: "CONTAINS", direction: IN)
 }
 
 input CreateSweetInput {

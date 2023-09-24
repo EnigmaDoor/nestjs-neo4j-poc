@@ -6,6 +6,7 @@ services:
     ports:
       - '7474:7474'
       - '${DB_PORT}:${DB_PORT}'
+      - '4000:4000'
     volumes:
       - data:/data
       - plugins:/plugins

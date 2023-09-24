@@ -1,0 +1,10 @@
+# List all Sweets with a quantity less than
+query Sweets {
+  sweets(where: { quantityInStock_LT: 3 }) {
+    name
+    price
+    quantityInStock
+    ingredients
+    uuid
+  }
+}

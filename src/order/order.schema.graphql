@@ -13,6 +13,12 @@ type Order {
   uuid: UUID!
   customer: String!
   status: OrderStatus!
+
+  sweets: [Sweet!]! @relationship(type: "CONTAINS", properties: "Contains", direction: OUT)
+}
+
+interface Contains @relationshipProperties {
+  quantity: Int!
 }
 
 input CreateOrderInput {

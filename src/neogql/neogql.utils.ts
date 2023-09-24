@@ -10,7 +10,7 @@ export type Neo4jScheme =
   | 'bolt+s'
   | 'bolt+ssc';
 
-export interface Neo4jConfig {
+export interface NeogqlConfig {
   scheme: Neo4jScheme;
   host: string;
   port: string | number;
@@ -25,15 +25,15 @@ export type ConnectionWithDriver = Connection & {
 
 export const createDatabaseConfig = (
   configService: ConfigService,
-  customConfig?: Neo4jConfig,
-): Neo4jConfig =>
+  customConfig?: NeogqlConfig,
+): NeogqlConfig =>
   customConfig || {
     host: configService.get('DB_HOST'),
     password: configService.get('DB_PASSWORD'),
     port: configService.get('DB_PORT'),
     scheme: configService.get('DB_SCHEME'),
     username: configService.get('DB_USERNAME'),
-  };
+};
 
 export class ConnectionError extends Error {
   public details: string;

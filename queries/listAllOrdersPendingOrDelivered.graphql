@@ -1,0 +1,8 @@
+# List all orders with a status of PENDING or DELIVERED
+query Orders {
+  orders(where: { status_IN: [PENDING, DELIVERED] }) {
+    customer
+    status
+    uuid
+  }
+}

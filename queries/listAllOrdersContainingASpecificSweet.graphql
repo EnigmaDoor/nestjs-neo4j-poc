@@ -1,0 +1,10 @@
+# List all Orders containing a specific Sweet
+query Orders {
+  orders(
+    where: { sweets_SOME: { uuid: "8d135d02-d7b2-499c-a130-494d83e90f13" } }
+  ) {
+    customer
+    status
+    uuid
+  }
+}
