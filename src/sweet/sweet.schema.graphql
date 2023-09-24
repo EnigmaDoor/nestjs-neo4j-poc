@@ -37,7 +37,6 @@ input UpdateSweetInput {
 }
 
 type Query {
-  sweets: [Sweet]!
   sweet(uuid: UUID!): Sweet
 }
 

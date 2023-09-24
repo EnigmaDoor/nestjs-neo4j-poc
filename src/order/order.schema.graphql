@@ -33,7 +33,6 @@ input UpdateOrderInput {
 }
 
 type Query {
-  orders: [Order]!
   order(uuid: UUID!): Order
 }
 
