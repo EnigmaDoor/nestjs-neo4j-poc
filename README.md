@@ -19,7 +19,7 @@ schema/graphql.ts contains auto-generated (through `npm run generate-typings`) c
 ## Journey
 As I mentionned in the interview, my experience with graphql & nestjs is limited (and never those two at the same time). It was initially a challenge to find the correct ressource & way to implement and use both of those technologies. Still, I decided to use that stack for this test first as a challenge and as an opportunity to learn it.
 
-I initially implemented resources and CRUD manually, shying away from @neo4j/graphql (mainly due to the way of defining the schema, everything in one file), which led to v0.1 of this repo using cypher-query-builder, using a code structure similar to https://github.com/k-code-yt/nestjs-gql-neo4j/tree/lesson-2/dockerize
+I initially implemented resources and CRUD manually, shying away from @neo4j/graphql (mainly due to the way of defining the schema, everything in one file), which led to v0.1 of this repo using cypher-query-builder, using a code structure similar to https://github.com/k-code-yt/nestjs-gql-neo4j/tree/lesson-2/dockerize  
 https://github.com/EnigmaDoor/pynea/tree/e044083b7f1c09ee0d7a50ddea6ffbc3e7d89268
 
 However, I found a way to piece together the schema definition of @neo4j/graphql with split graphql schemas, and progressively switched the app to fully use the library's functionalities, removing most of my previous code.
