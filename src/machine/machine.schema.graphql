@@ -31,6 +31,12 @@ input UpdateMachineInput {
   status: MachineStatus
 }
 
+input MachineProducesSweetInput {
+  uuid: UUID!
+  quantity: Int!
+  sweetUuid: UUID!
+}
+
 type Query {
   machine(uuid: UUID!): Machine
 }
@@ -39,4 +45,6 @@ type Mutation {
   createMachine(createMachineInput: CreateMachineInput!): Machine!
   updateMachine(updateMachineInput: UpdateMachineInput!): Machine!
   removeMachine(uuid: UUID!): Boolean!
+
+  machineProducesSweet(machineProducesSweetInput: MachineProducesSweetInput!): Boolean
 }

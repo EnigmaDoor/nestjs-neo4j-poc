@@ -10,6 +10,8 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { NEOGQL_CONFIG, NEOGQL_CONNECTION } from './neogql.constants';
 
+import { MachineResolver } from 'src/machine/machine.resolver';
+
 export const gqlProviderFactory = async (configService: ConfigService, customConfig?: NeogqlConfig) => {
     const loader = new GraphQLTypesLoader();
     const typeDefs = await loader.mergeTypesByPaths(['./**/*.schema.graphql']);
@@ -21,7 +23,8 @@ export const gqlProviderFactory = async (configService: ConfigService, customCon
 
     const neoSchema = new Neo4jGraphQL({
         typeDefs,
-        driver
+        driver,
+        // resolvers: [MachineResolver]
     });
 
     const schema = await neoSchema.getSchema();
@@ -36,8 +39,6 @@ export const gqlProviderFactory = async (configService: ConfigService, customCon
     };
 };
 
-@Module({
-    providers: []
-})
+@Module({})
 
 export class NeogqlModule {}

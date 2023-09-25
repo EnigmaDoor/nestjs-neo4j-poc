@@ -1,6 +1,6 @@
 ## Description
 Basic nestjs + neo4j + graphql implementation using Machines, Sweets & Orders.
-
+11;rgb:3030/0a0a/2424
 ## Installation & Running the app
 
 ```bash
@@ -25,9 +25,11 @@ https://github.com/EnigmaDoor/pynea/tree/e044083b7f1c09ee0d7a50ddea6ffbc3e7d8926
 However, I found a way to piece together the schema definition of @neo4j/graphql with split graphql schemas, and progressively switched the app to fully use the library's functionalities, removing most of my previous code.
 https://github.com/EnigmaDoor/pynea/tree/bb3410c23b7aa4d9ccc9af2318689b2b8d97d6d6
 
+Once the codebase was fully functional, with the resourcs and queries requested in the prompt, I cleaned it up and then attempted to build a custom resolver as extra and see how it would work, which isn't yet finished due to time constraint and a slight mismatch between nestjs/graphql and Neo4j/graphql
+
 ## Possible Improvements
 In random order, some possible improvements or interesting features to implement:
-- Some machine module to add some random business logic and see how it plays with the current architecture.
+- Some machine module & resolver to add some random business logic and see how it plays with the current architecture. [Ongoing]
 - Testing: Implement testing.
 - Authentication: User entity type (order.customer becomes a relation to user). Add regular JWT authto the user, not done here since it's already done a lot online.
 - Random, real-time order generation script running against the server, populating data for a system of prediction of incoming orders based on the received orders until now.

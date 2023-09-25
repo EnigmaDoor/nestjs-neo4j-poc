@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { NeogqlModule, gqlProviderFactory } from './neogql/neogql.module';
+import { MachineModule } from './machine/machine.module';
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import { NeogqlModule, gqlProviderFactory } from './neogql/neogql.module';
             driver: ApolloDriver,
             useFactory: gqlProviderFactory
         }),
+        MachineModule,
     ],
     controllers: [AppController],
     providers: [AppService],
