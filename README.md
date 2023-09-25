@@ -1,6 +1,6 @@
 ## Description
 Basic nestjs + neo4j + graphql implementation using Machines, Sweets & Orders.
-11;rgb:3030/0a0a/2424
+
 ## Installation & Running the app
 
 ```bash
