@@ -5,6 +5,7 @@ Basic nestjs + neo4j + graphql implementation using Machines, Sweets & Orders.
 
 ```bash
 $ cp .env.example .env
+$ npm install
 $ docker-compose up
 ```
 You can find scripts to populate & execute the requested requests in ./queries/
