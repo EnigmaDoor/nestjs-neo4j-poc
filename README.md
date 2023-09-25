@@ -4,6 +4,7 @@ Basic nestjs + neo4j + graphql implementation using Machines, Sweets & Orders.
 ## Installation & Running the app
 
 ```bash
+$ echo "Please use node v20.5.1 at least"
 $ cp .env.example .env
 $ npm install
 $ docker-compose up
