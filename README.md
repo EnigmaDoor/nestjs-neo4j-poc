@@ -19,13 +19,13 @@ Each part of the schema is in its own folder for clarity and better organization
 schema/graphql.ts contains auto-generated (through `npm run generate-typings`) classes and definitons of the schema to avoid repetition and allow typings in the modules.
 
 ## Journey
-As I mentionned in the interview, my experience with graphql & nestjs is limited (and never those two at the same time). It was initially a challenge to find the correct ressource & way to implement and use both of those technologies. Still, I decided to use that stack for this test first as a challenge and as an opportunity to learn it.
+My experience with graphql & nestjs is limited (and never those two at the same time). It was initially a challenge to find the correct ressource & way to implement and use both of those technologies. Still, I decided to use that stack for this test first as a challenge and as an opportunity to learn it.
 
 I initially implemented resources and CRUD manually, shying away from @neo4j/graphql (mainly due to the way of defining the schema, everything in one file), which led to v0.1 of this repo using cypher-query-builder, using a code structure similar to https://github.com/k-code-yt/nestjs-gql-neo4j/tree/lesson-2/dockerize  
-https://github.com/EnigmaDoor/pynea/tree/e044083b7f1c09ee0d7a50ddea6ffbc3e7d89268
+https://github.com/EnigmaDoor/nestjs-neo4j-poc/tree/e044083b7f1c09ee0d7a50ddea6ffbc3e7d89268
 
 However, I found a way to piece together the schema definition of @neo4j/graphql with split graphql schemas, and progressively switched the app to fully use the library's functionalities, removing most of my previous code.
-https://github.com/EnigmaDoor/pynea/tree/bb3410c23b7aa4d9ccc9af2318689b2b8d97d6d6
+https://github.com/EnigmaDoor/nestjs-neo4j-poc/tree/bb3410c23b7aa4d9ccc9af2318689b2b8d97d6d6
 
 Once the codebase was fully functional, with the resourcs and queries requested in the prompt, I cleaned it up and then attempted to build a custom resolver as extra and see how it would work, which isn't yet finished due to time constraint and a slight mismatch between nestjs/graphql and Neo4j/graphql
 
